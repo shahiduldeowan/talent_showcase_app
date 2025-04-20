@@ -1,3 +1,4 @@
+export 'di/di.dart' hide AppModule;
 export 'constants/app_constants.dart';
 export 'constants/route_names.dart';
 export 'constants/asset_paths.dart';
