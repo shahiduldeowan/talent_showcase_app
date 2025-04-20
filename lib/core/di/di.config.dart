@@ -14,7 +14,9 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
+import '../../routes.dart' as _i684;
 import '../services/navigation_service.dart' as _i31;
+import '../theme/my_theme.dart' as _i885;
 import 'di.dart' as _i913;
 
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -30,6 +32,8 @@ Future<_i174.GetIt> $initGetIt(
     preResolve: true,
   );
   gh.singleton<_i558.FlutterSecureStorage>(() => appModule.secureStorage);
+  gh.singleton<_i885.MyTheme>(() => _i885.MyTheme());
+  gh.singleton<_i684.AppRoutes>(() => _i684.AppRoutes());
   gh.lazySingleton<_i31.NavigationService>(() => appModule.navigationService);
   return getIt;
 }
