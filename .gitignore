@@ -47,3 +47,5 @@ app.*.map.json
 
 PROJECT_STRUCTURE.MD
 /docs/
+/.env
+/.env.*
