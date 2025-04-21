@@ -11,12 +11,10 @@ abstract class AppException implements Exception {
       '$runtimeType: $message${stackTrace != null ? '\n$stackTrace' : ''}';
 }
 
-/// Local data exceptions
 class CacheException extends AppException {
   const CacheException(super.message, [super.stackTrace]);
 }
 
-/// Server/API exceptions
 class ServerException extends AppException {
   final int? statusCode;
   final dynamic responseData;
@@ -44,12 +42,10 @@ class InvalidCredentialsException extends AuthException {
     : super('Invalid email or password', stackTrace);
 }
 
-/// Network exceptions
 class NetworkException extends AppException {
   const NetworkException(super.message, [super.stackTrace]);
 }
 
-/// Converts Dio errors to app exceptions
 extension DioErrorMapper on DioException {
   AppException toAppException() {
     switch (type) {
