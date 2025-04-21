@@ -29,6 +29,7 @@ analyzer:
     invalid_use_of_visible_for_testing_member: error
     close_sinks: error
     avoid_redundant_argument_values: warning
+    invalid_annotation_target: ignore
 
 linter:
   rules:
