@@ -1,7 +1,6 @@
-import 'package:dartz/dartz.dart';
-import 'package:talent_showcase_app/core/core_exports.dart' show Failure;
+import 'package:talent_showcase_app/core/core_exports.dart' show FutureResult;
 
 abstract class AuthRepository {
-  Future<Either<Failure, bool>> isAuthenticated();
-  Future<Either<Failure, void>> logout();
+  FutureResult<bool> isAuthenticated();
+  FutureResult<void> logout();
 }

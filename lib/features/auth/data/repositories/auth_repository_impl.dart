@@ -1,6 +1,5 @@
-import 'package:dartz/dartz.dart';
 import 'package:talent_showcase_app/core/core_exports.dart'
-    show ErrorHandler, Failure, FailureExtensions;
+    show ErrorHandler, Failure, FailureExtensions, FutureResult, Left, Right;
 import 'package:talent_showcase_app/features/auth/data/datasources/auth_local_data_source.dart';
 import 'package:talent_showcase_app/features/auth/domain/repositories/auth_repository.dart';
 
@@ -10,7 +9,7 @@ class AuthRepositoryImpl implements AuthRepository {
   final AuthLocalDataSource authLocalDataSource;
 
   @override
-  Future<Either<Failure, bool>> isAuthenticated() async {
+  FutureResult<bool> isAuthenticated() async {
     try {
       final String? token = await authLocalDataSource.getAccessToken();
       return Right<Failure, bool>(token != null);
@@ -22,7 +21,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Either<Failure, void>> logout() async {
+  FutureResult<void> logout() async {
     try {
       await authLocalDataSource.clearAuthData();
       return const Right<Failure, void>(null);
