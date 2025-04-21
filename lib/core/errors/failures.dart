@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:talent_showcase_app/core/errors/exceptions.dart';
+import 'package:talent_showcase_app/core/utils/app_logger.dart' show logger;
 
 part 'failures.freezed.dart';
 
@@ -65,9 +66,9 @@ extension FailureExtensions on Failure {
   }
 
   void logError() {
-    print('[ERROR] $userFriendlyMessage');
+    logger.e(userFriendlyMessage);
     if (this is UnexpectedFailure) {
-      print('StackTrace: $stackTrace');
+      logger.e('StackTrace', stackTrace: stackTrace);
     }
   }
 }
