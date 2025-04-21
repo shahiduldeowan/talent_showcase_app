@@ -17,7 +17,7 @@ class SplashCubit extends Cubit<SplashState> {
   void checkAuthStatus() async {
     emit(const SplashState.loading());
 
-    await Future<dynamic>.delayed(const Duration(seconds: 2));
+    await Future<dynamic>.delayed(const Duration(seconds: 3));
 
     final Either<Failure, bool> result = await _splashCheckAuthStatusUseCase();
     result.fold(

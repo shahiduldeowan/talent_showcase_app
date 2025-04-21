@@ -32,7 +32,7 @@ void main() {
         return splashCubit;
       },
       act: (SplashCubit cubit) => cubit.checkAuthStatus(),
-      wait: const Duration(seconds: 2), // Wait for the delay
+      wait: const Duration(seconds: 3), // Wait for the delay
       expect:
           () => <SplashState>[
             const SplashState.loading(),
@@ -52,7 +52,7 @@ void main() {
         return splashCubit;
       },
       act: (SplashCubit cubit) => cubit.checkAuthStatus(),
-      wait: const Duration(seconds: 2), // Wait for the delay
+      wait: const Duration(seconds: 3), // Wait for the delay
       expect:
           () => <SplashState>[
             const SplashState.loading(),
@@ -77,7 +77,7 @@ void main() {
         return splashCubit;
       },
       act: (SplashCubit cubit) => cubit.checkAuthStatus(),
-      wait: const Duration(seconds: 2), // Wait for the delay
+      wait: const Duration(seconds: 3), // Wait for the delay
       expect:
           () => <SplashState>[
             const SplashState.loading(),
