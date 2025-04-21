@@ -14,7 +14,7 @@ abstract class AuthLocalDataSource {
   Future<void> clearAuthData();
 }
 
-@Injectable(as: AuthLocalDataSource)
+@LazySingleton(as: AuthLocalDataSource)
 class AuthLocalDataSourceImpl implements AuthLocalDataSource {
   AuthLocalDataSourceImpl({required this.secureStorage});
 
