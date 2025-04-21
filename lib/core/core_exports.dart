@@ -9,3 +9,4 @@ export 'services/navigation_service.dart';
 export 'errors/exceptions.dart';
 export 'errors/failures.dart';
 export 'errors/error_handler.dart';
+export 'utils/use_case.dart';
