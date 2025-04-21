@@ -11,6 +11,7 @@ export 'errors/failures.dart';
 export 'errors/error_handler.dart';
 export 'utils/use_case.dart';
 export 'utils/type_defs.dart';
+export 'utils/flushbar_utils.dart';
 
 // 3rd party packages
 export 'package:dartz/dartz.dart';
