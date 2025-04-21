@@ -1,8 +1,10 @@
+import 'package:injectable/injectable.dart';
 import 'package:talent_showcase_app/core/core_exports.dart'
     show ErrorHandler, Failure, FailureExtensions, FutureResult, Left, Right;
 import 'package:talent_showcase_app/features/auth/data/datasources/auth_local_data_source.dart';
 import 'package:talent_showcase_app/features/auth/domain/repositories/auth_repository.dart';
 
+@LazySingleton(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl({required this.authLocalDataSource});
 
