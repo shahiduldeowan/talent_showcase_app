@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talent_showcase_app/core/core_exports.dart'
-    show AssetPaths, NavigationService, RouteNames, ThemeExtension, getIt;
+    show
+        AssetPaths,
+        FlushbarType,
+        NavigationService,
+        RouteNames,
+        ThemeExtension,
+        getIt,
+        showAppAlert;
 import 'package:talent_showcase_app/features/splash/presentation/cubit/splash_cubit.dart';
 
 class SplashPage extends StatefulWidget {
@@ -12,16 +19,23 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  double scaleFactor = 0.2;
+  static const double _initialScaleFactor = 0.2;
+  static const double _finalScaleFactor = 1.0;
+  static const Duration _animationDuration = Duration(milliseconds: 3080);
+  static const Duration _initialDelay = Duration(milliseconds: 100);
+
+  double scaleFactor = _initialScaleFactor;
 
   @override
   void initState() {
     super.initState();
+    _startAnimation();
+  }
 
-    // ignore: always_specify_types
-    Future.delayed(const Duration(milliseconds: 100), () {
+  void _startAnimation() {
+    Future<dynamic>.delayed(_initialDelay, () {
       setState(() {
-        scaleFactor = 1.0;
+        scaleFactor = _finalScaleFactor;
       });
     });
   }
@@ -29,43 +43,44 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<SplashCubit>(
-      create:
-          (BuildContext splashCubit) => getIt<SplashCubit>()..checkAuthStatus(),
-      child: _createSplashPage(),
+      create: (_) => getIt<SplashCubit>()..checkAuthStatus(),
+      child: BlocListener<SplashCubit, SplashState>(
+        listener: _handleStateChanges,
+        child: _buildScaffold(context),
+      ),
     );
   }
 
-  Widget _createSplashPage() {
-    return BlocListener<SplashCubit, SplashState>(
-      listener: (BuildContext context, SplashState state) {
-        if (state is SplashStateUnauthenticated) {
-          getIt<NavigationService>().navigateAndRemoveUntil(
-            RouteNames.loginPageRoute,
-          );
-        } else if (state is SplashStateAuthenticated) {
-          getIt<NavigationService>().navigateAndRemoveUntil(
-            RouteNames.homePageRoute,
-          );
-        } else if (state is SplashStateError) {}
-      },
-      child: Scaffold(
-        backgroundColor: context.primaryColor,
-        body: SizedBox(
-          width: double.maxFinite,
-          child: Center(
-            child: AnimatedScale(
-              scale: scaleFactor,
-              duration: const Duration(milliseconds: 3080),
-              curve: Curves.linear,
-              child: Image.asset(
-                AssetPaths.logo,
-                width: 300,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ),
+  void _handleStateChanges(BuildContext context, SplashState state) {
+    if (state is SplashStateUnauthenticated) {
+      getIt<NavigationService>().navigateAndRemoveUntil(
+        RouteNames.loginPageRoute,
+      );
+    } else if (state is SplashStateAuthenticated) {
+      getIt<NavigationService>().navigateAndRemoveUntil(
+        RouteNames.homePageRoute,
+      );
+    } else if (state is SplashStateError) {
+      showAppAlert(context, message: state.message, type: FlushbarType.error);
+    }
+  }
+
+  Widget _buildScaffold(BuildContext context) {
+    return Scaffold(
+      backgroundColor: context.primaryColor,
+      body: SizedBox(
+        width: double.infinity,
+        child: Center(child: _buildAnimatedLogo()),
       ),
+    );
+  }
+
+  Widget _buildAnimatedLogo() {
+    return AnimatedScale(
+      scale: scaleFactor,
+      duration: _animationDuration,
+      curve: Curves.linear,
+      child: Image.asset(AssetPaths.logo, width: 300, fit: BoxFit.cover),
     );
   }
 }
