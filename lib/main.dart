@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart' show dotenv;
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:talent_showcase_app/app.dart';
-import 'package:talent_showcase_app/core/di/di.dart' show configureDependencies;
+import 'package:talent_showcase_app/core/core_exports.dart'
+    show configureDependencies;
 
-void main() {
+Future<void> main() async {
+  await dotenv.load(fileName: '.env');
   final WidgetsBinding widgetsBinding =
       WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  configureDependencies();
+  await configureDependencies();
   runApp(const App());
+  FlutterNativeSplash.remove();
 }
 
-//flutter pub run build_runner build --delete-conflicting-outputs --build-filter="lib/core/di/*"
-//flutter pub run build_runner build --delete-conflicting-outputs --verbose
 //flutter pub run build_runner clean
 //flutter pub run build_runner build --delete-conflicting-outputs
-
-// whenever your initialization is completed, remove the splash screen:
-    // FlutterNativeSplash.remove();
-
