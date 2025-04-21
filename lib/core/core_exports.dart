@@ -12,6 +12,7 @@ export 'errors/error_handler.dart';
 export 'utils/use_case.dart';
 export 'utils/type_defs.dart';
 export 'utils/flushbar_utils.dart';
+export 'utils/app_logger.dart' show logger, AppLogger;
 
 // 3rd party packages
 export 'package:dartz/dartz.dart';
