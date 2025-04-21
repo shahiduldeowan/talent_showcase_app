@@ -3,7 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart' show dotenv;
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:talent_showcase_app/app.dart';
 import 'package:talent_showcase_app/core/core_exports.dart'
-    show configureDependencies;
+    show AppLogger, configureDependencies;
 
 Future<void> main() async {
   await dotenv.load(fileName: '.env');
@@ -11,6 +11,7 @@ Future<void> main() async {
       WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await configureDependencies();
+  AppLogger.debugEnabled = true;
   runApp(const App());
   FlutterNativeSplash.remove();
 }
