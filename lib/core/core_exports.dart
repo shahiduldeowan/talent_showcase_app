@@ -6,3 +6,6 @@ export 'config/app_config.dart';
 export 'theme/my_theme.dart';
 export 'theme/theme_extensions.dart';
 export 'services/navigation_service.dart';
+export 'errors/exceptions.dart';
+export 'errors/failures.dart';
+export 'errors/error_handler.dart';
