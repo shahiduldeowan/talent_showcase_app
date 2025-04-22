@@ -7,5 +7,6 @@ abstract class AuthState with _$AuthState {
     @Default(PasswordFormz.pure()) PasswordFormz password,
     @Default(FormzSubmissionStatus.initial) FormzSubmissionStatus status,
     @Default('') String errorMessage,
+    @Default(false) bool isPasswordVisible,
   }) = _AuthState;
 }
