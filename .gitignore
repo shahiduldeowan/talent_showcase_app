@@ -51,3 +51,4 @@ PROJECT_STRUCTURE.MD
 /.env.*
 *.config.*
 *.freezed.*
+*.g.*
