@@ -5,6 +5,7 @@ import 'package:talent_showcase_app/core/core_exports.dart'
         AssetPaths,
         FlushbarType,
         NavigationService,
+        ResponsiveExtension,
         RouteNames,
         ThemeExtension,
         getIt,
@@ -58,7 +59,7 @@ class _SplashPageState extends State<SplashPage> {
       );
     } else if (state is SplashStateAuthenticated) {
       getIt<NavigationService>().navigateAndRemoveUntil(
-        RouteNames.homePageRoute,
+        RouteNames.mainShellRoute,
       );
     } else if (state is SplashStateError) {
       showAppAlert(context, message: state.message, type: FlushbarType.error);
@@ -80,7 +81,7 @@ class _SplashPageState extends State<SplashPage> {
       scale: scaleFactor,
       duration: _animationDuration,
       curve: Curves.linear,
-      child: Image.asset(AssetPaths.logo, width: 300, fit: BoxFit.cover),
+      child: Image.asset(AssetPaths.logo, width: 300.w, fit: BoxFit.cover),
     );
   }
 }
