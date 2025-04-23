@@ -59,7 +59,7 @@ class _SplashPageState extends State<SplashPage> {
       );
     } else if (state is SplashStateAuthenticated) {
       getIt<NavigationService>().navigateAndRemoveUntil(
-        RouteNames.mainShellRoute,
+        RouteNames.mainShellPageRoute,
       );
     } else if (state is SplashStateError) {
       showAppAlert(context, message: state.message, type: FlushbarType.error);
