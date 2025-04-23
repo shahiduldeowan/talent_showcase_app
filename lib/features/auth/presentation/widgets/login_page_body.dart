@@ -46,8 +46,9 @@ class LoginPageBody extends StatelessWidget {
         type: FlushbarType.error,
       );
     } else if (state.status.isSuccess) {
+      showAppAlert(context, message: AppConstants.loginSuccess);
       getIt<NavigationService>().navigateAndRemoveUntil(
-        RouteNames.mainShellRoute,
+        RouteNames.mainShellPageRoute,
       );
     }
   }
