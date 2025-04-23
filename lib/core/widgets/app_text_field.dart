@@ -4,7 +4,7 @@ class AppTextField extends StatelessWidget {
   const AppTextField({
     super.key,
     this.controller,
-    required this.label,
+    this.label,
     this.prefixIcon,
     this.suffixIcon,
     this.validator,
@@ -15,10 +15,12 @@ class AppTextField extends StatelessWidget {
     this.onChanged,
     this.errorText,
     this.initialValue,
+    this.maxLines = 1,
+    this.hintText,
   });
 
   final TextEditingController? controller;
-  final String label;
+  final String? label;
   final IconData? prefixIcon;
   final Widget? suffixIcon;
   final String? Function(String?)? validator;
@@ -29,10 +31,13 @@ class AppTextField extends StatelessWidget {
   final ValueChanged<String>? onChanged;
   final String? errorText;
   final String? initialValue;
+  final int maxLines;
+  final String? hintText;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLines: maxLines,
       initialValue: initialValue,
       controller: controller,
       focusNode: focusNode,
@@ -44,6 +49,7 @@ class AppTextField extends StatelessWidget {
         }
       },
       decoration: InputDecoration(
+        hintText: hintText,
         labelText: label,
         prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
         suffixIcon: suffixIcon,
