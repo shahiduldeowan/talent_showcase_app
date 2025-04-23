@@ -17,7 +17,6 @@ export 'utils/flushbar_utils.dart';
 export 'utils/app_logger.dart' show logger, AppLogger;
 export 'widgets/app_text_field.dart';
 export 'widgets/gradient_text.dart';
-export 'utils/validators.dart';
 export 'widgets/buttons/custom_filled_button.dart';
 export 'formz/email_formz.dart';
 export 'formz/password_formz.dart';
@@ -26,6 +25,7 @@ export 'widgets/app_sizer.dart';
 export 'constants/app_sizes.dart';
 export 'utils/extensions/responsive_extension.dart';
 export 'utils/date_formatter.dart';
+export 'widgets/dialogs/app_exit_dialog.dart';
 
 // 3rd party packages
 export 'package:dartz/dartz.dart';
