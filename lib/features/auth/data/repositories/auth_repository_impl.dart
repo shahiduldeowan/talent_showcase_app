@@ -25,7 +25,7 @@ class AuthRepositoryImpl implements AuthRepository {
       return Right<Failure, bool>(token != null);
     } catch (e) {
       final Failure failure = ErrorHandler.handleError(e);
-      failure.logError();
+      // failure.logError();
       return Left<Failure, bool>(failure);
     }
   }
