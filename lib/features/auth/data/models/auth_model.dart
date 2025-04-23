@@ -24,7 +24,9 @@ abstract class AuthDataModel with _$AuthDataModel {
 
   factory AuthDataModel.fromJson(Map<String, dynamic> json) =>
       _$AuthDataModelFromJson(json);
+}
 
+extension AuthDataModelX on AuthDataModel {
   AuthEntity toEntity() =>
       AuthEntity(accessToken: accessToken, refreshToken: refreshToken);
 }
