@@ -12,4 +12,10 @@ abstract class AuthRequestModel with _$AuthRequestModel {
 
   factory AuthRequestModel.fromJson(Map<String, dynamic> json) =>
       _$AuthRequestModelFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => <String, dynamic>{
+    'email': email,
+    'password': password,
+  };
 }
