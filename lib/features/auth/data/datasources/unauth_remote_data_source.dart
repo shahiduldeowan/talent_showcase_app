@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:retrofit/http.dart';
 import 'package:talent_showcase_app/features/auth/data/models/auth_model.dart';
 import 'package:talent_showcase_app/features/auth/data/models/auth_request_model.dart';
+import 'package:retrofit/error_logger.dart';
 
 part 'unauth_remote_data_source.g.dart';
 
