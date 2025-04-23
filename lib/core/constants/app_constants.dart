@@ -11,6 +11,8 @@ class AppConstants {
       'Password must be at least 6 characters';
   static const String createAccountMessage =
       'Create account page will be soon...';
+  static const String invalidCredentialsMessage = 'Email and password is doesn\'t match!';
+  static const String loginSuccess = 'Login Success!';
 
   // App Keys
   static const String accessTokenKey = 'ACCESS_TOKEN_KEY';
