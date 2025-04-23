@@ -42,28 +42,6 @@ class MainBottomNavBarWidget extends StatelessWidget {
       },
     );
   }
-
-  Widget newMethods(BuildContext context, int currentIndex) {
-    return BottomNavigationBar(
-      currentIndex: currentIndex,
-      onTap: (int index) {
-        context.read<MainCubit>().selecteItem(index);
-      },
-      // backgroundColor: AppColors.primary,
-      // selectedItemColor: AppColors.surface,
-      // unselectedItemColor: AppColors.fontGray,
-      showSelectedLabels: true,
-      showUnselectedLabels: false,
-      items:
-          _navItems.map((NavItemModel navItem) {
-            return BottomNavigationBarItem(
-              icon: Icon(navItem.icon),
-              activeIcon: Icon(navItem.activeIcon),
-              label: navItem.label,
-            );
-          }).toList(),
-    );
-  }
 }
 
 class NavItemModel {
